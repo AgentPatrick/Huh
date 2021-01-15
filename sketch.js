@@ -2,6 +2,8 @@ var PLAY = 1;
 var END = 0;
 var gameState = PLAY;
 
+var jumpSound;
+
 var trex, trex_running, trex_collided;
 var ground, invisibleGround, groundImage;
 
@@ -31,6 +33,8 @@ function preload(){
   
   gameOverImg = loadImage("gameOver.png");
   restartImg = loadImage("restart.png");
+  
+  jumpSound = loadSound("jump.mp3");
 }
 
 function setup() {
@@ -79,6 +83,7 @@ function draw() {
   
     if(keyDown("space") && trex.y >= 159) {
       trex.velocityY = -12;
+      jumpSound.play();
     }
   
     trex.velocityY = trex.velocityY + 0.8
